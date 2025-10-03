@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithm Visualizer</title>
+    <!-- Link to the new stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <h1>Binary Tree Algorithm Visualizer</h1>
+            <p>An interactive tool to understand tree data structures.</p>
+        </header>
+
+        <main class="app-main">
+            <aside class="controls-sidebar">
+                
+                <section class="control-section" aria-labelledby="config-heading">
+                    <h2 id="config-heading">Configuration</h2>
+                    <div class="control-group">
+                        <label for="arraySize">Node Count</label>
+                        <input type="range" id="arraySize" min="1" max="50" value="8">
+                        <div class="range-value">8 nodes</div>
+                    </div>
+                    <div class="button-group">
+                        <button id="generateBtn" class="btn btn-primary">Generate New Tree</button>
+                    </div>
+                </section>
+
+                <section class="control-section" aria-labelledby="ops-heading">
+                    <h2 id="ops-heading">Traversals</h2>
+                    <div class="control-group">
+                        <label for="algo-select">Algorithm</label>
+                        <select id="algo-select">
+                            <option value="in-order">In-order Traversal</option>
+                            <option value="pre-order">Pre-order Traversal</option>
+                            <option value="post-order">Post-order Traversal</option>
+                        </select>
+                    </div>
+                    <div class="button-group">
+                        <button id="visualizeBtn" class="btn btn-secondary">Visualize Traversal</button>
+                    </div>
+                </section>
+
+                <section class="control-section" aria-labelledby="search-heading">
+                    <h2 id="search-heading">Search</h2>
+                    <div class="control-group search-container">
+                        <label for="search-input">Node Value</label>
+                        <input type="number" placeholder="e.g., 42" id="search-input">
+                        <button id="search-btn" class="btn btn-secondary">Search and Visualize</button>
+                    </div>
+                </section>
+                
+                <section class="control-section" aria-labelledby="result-heading">
+                    <h2 id="result-heading">Result</h2>
+                    <div class="message-area-container">
+                        <div class="message-area">Select an operation to begin.</div>
+                    </div>
+                </section>
+
+            </aside>
+            <div class="canvas-container">
+                <canvas id="mycanvas" width="1200" height="900"></canvas>
+            </div>
+        </main>
+        
+        <footer class="app-footer">
+            <p>Created to make learning data structures intuitive and fun.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
