@@ -22,10 +22,19 @@
                 
                 <section class="control-section" aria-labelledby="config-heading">
                     <h2 id="config-heading">Configuration</h2>
+                    <label for="option-type">Select Config</label>
+                        <select id="option-type">
+                            <option value="node-count">Generate by size</option>
+                            <option value="manual-enter">Manually enter values</option>
+                        </select>
                     <div class="control-group">
                         <label for="arraySize">Node Count</label>
                         <input type="range" id="arraySize" min="1" max="50" value="8">
                         <div class="range-value">8 nodes</div>
+                    </div>
+                    <div class="control-group-user hidden">
+                        <label for="user-ip">Enter the values</label>
+                        <input type="text" placeholder="eg 40 20 30 ..." id="user-ip">
                     </div>
                     <div class="button-group">
                         <button id="generateBtn" class="btn btn-primary">Generate New Tree</button>

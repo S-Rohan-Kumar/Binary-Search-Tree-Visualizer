@@ -3,12 +3,16 @@ document.addEventListener("DOMContentLoaded",()=>{
     const canvas = document.getElementById("mycanvas");
     const ctx = canvas.getContext('2d');
     const arraySizeInput = document.querySelector("#arraySize");
+    const userIp = document.getElementById("user-ip");
     const generatebtn = document.querySelector(".btn-primary")
     const algo_select = document.getElementById("algo-select");
     const startbtn = document.getElementById("visualizeBtn");
     const resultArea = document.querySelector(".message-area");
     const searchInput = document.getElementById("search-input");
     const searchBtn = document.getElementById("search-btn");    
+    const iptype = document.getElementById("option-type");
+    const geneclass = document.querySelector(".control-group");
+    const inputclass = document.querySelector(".control-group-user");
 
     arraySizeInput.addEventListener('input',()=>{
         document.querySelector("#arraySize + .range-value").textContent = `${arraySizeInput.value} elements`
@@ -246,6 +250,18 @@ document.addEventListener("DOMContentLoaded",()=>{
 
     }
 
+    iptype.addEventListener('change',()=>{
+        const ipselected = iptype.value;
+        if(ipselected==="node-count"){
+            geneclass.classList.remove("hidden");
+            inputclass.classList.add("hidden")
+        }
+        else if(ipselected==="manual-enter"){
+            geneclass.classList.add("hidden");
+            inputclass.classList.remove("hidden")
+        }
+    })
+
     let activeTree = null;
 
     function generatearray(arr,n){
@@ -255,11 +271,28 @@ document.addEventListener("DOMContentLoaded",()=>{
     }
 
     generatebtn.addEventListener('click',()=>{
-        ctx.clearRect(0,0,800,600);
+        ctx.clearRect(0,0,1200,900);
         activeTree = new BiaryTree(ctx);
         let array =[]
-        const size = arraySizeInput.value;
-        generatearray(array,size);
+
+
+        const ipselected = iptype.value;
+        if(ipselected==="node-count"){
+            const size = arraySizeInput.value;
+            generatearray(array,size);
+        }
+        else if(ipselected==="manual-enter"){
+            const input = userIp.value;
+            if (input.trim() === '') {
+                resultArea.textContent = 'Please enter some node values.';
+                return;
+            }
+            array = input.split(/[\s,]+/).filter(v => v !== '').map(Number).filter(n => !isNaN(n));
+            if (array.length === 0) {
+                resultArea.textContent = 'No valid numbers were entered.';
+                return;
+            }
+        }
 
         const uniqueele = [...new Set(array)];
 

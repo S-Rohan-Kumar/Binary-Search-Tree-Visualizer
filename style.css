@@ -154,7 +154,12 @@ body::before {
     margin-bottom: 1.25rem;
 }
 
-.control-group:last-child {
+.control-group-user {
+    margin-bottom: 1.25rem;
+}
+
+.control-group:last-child,
+.control-group-user:last-child {
     margin-bottom: 0;
 }
 
@@ -243,9 +248,33 @@ input[type="number"]::placeholder {
     color: var(--text-muted);
 }
 
+input[type="text"] {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-family: inherit;
+    transition: var(--transition);
+    outline: none;
+}
+
+input[type="text"]:focus {
+    border-color: var(--primary);
+    background: var(--bg-secondary);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+input[type="text"]::placeholder {
+    color: var(--text-muted);
+}
+
 select {
     width: 100%;
     padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
     background: var(--bg-tertiary);
     border: 1px solid var(--border);
     border-radius: var(--radius);
@@ -550,4 +579,8 @@ select:focus {
 *:focus-visible {
     outline: 2px solid var(--primary);
     outline-offset: 2px;
+}
+
+.hidden {
+    display: none;
 }
